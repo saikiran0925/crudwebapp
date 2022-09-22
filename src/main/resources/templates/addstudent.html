@@ -14,6 +14,7 @@
   <h2>Student Registration Form</h2>
   <form action="#" th:action="@{/students}" th:object = "${student}" method = "POST">
     <div class="form-group">
+    <input type= "hidden" th:field = "*{id}"/>
      <label for="name">Name</label>
       <input type="text" th:field="*{name}" class="form-control"  placeholder="Enter Student Name" name="name" >
     </div>

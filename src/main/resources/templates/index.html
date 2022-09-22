@@ -20,6 +20,8 @@
         <th>Gender</th>
         <th>Age</th>
         <th>Email</th>
+        <th>Edit</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -28,6 +30,9 @@
         <td th:text = "${students.gender}"></td>
         <td th:text = "${students.age}"></td>
         <td th:text = "${students.email}"></td>
+        <td><a th:href ="@{/students/{id}(id = ${students.id})}" class="btn btn-primary" >Edit</a>
+        <td><a th:href ="@{/deletestudents/{id}(id = ${students.id})}" class="btn btn-danger" >Delete</a>
+        
       </tr>
      
     </tbody>
