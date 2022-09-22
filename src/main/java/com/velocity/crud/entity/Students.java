@@ -28,6 +28,6 @@ public class Students {
 	
 	private String email;
 	
-	private String photo;
+	
 
 }
