@@ -1,18 +1,15 @@
 package com.velocity.crud.controllers;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.velocity.crud.entity.Students;
-
 import com.velocity.crud.services.StudentsServiceImpl;
 
 @RestController
@@ -32,8 +29,10 @@ public class StudentsController {
 	}
 	
 	@GetMapping("/addstudent")
-	public ModelAndView addStudent() {
+	public ModelAndView addStudent(Model model) {
 		ModelAndView mv = new ModelAndView();
+		Students student = new Students();
+		mv.addObject("student", student);
 		mv.setViewName("addstudent");
 		return mv;
 	}
@@ -41,18 +40,17 @@ public class StudentsController {
 	
 	
 
-	
+	@PostMapping("/students")
+	public ModelAndView saveStudents( Students students) {
+		ModelAndView mv = new ModelAndView("redirect:/");
+		 studentsService.saveStudent(students);
+		 return mv;
+		}
 
 	
-	@GetMapping("/students")
-	public List<Students> getAllStudents(){
-		return studentsService.getAllStudents();
-	}
 	
-	@PostMapping("/students")
-	public Students saveStudents(@RequestBody Students students) {
-		return studentsService.saveStudent(students);
-		}
+	
+	
 	
 	@GetMapping("/students/{id}")
 	public Students getStudentById(@PathVariable Integer id) {
