@@ -20,10 +20,7 @@ public class StudentsServiceImpl implements StudentsService{
 		return studentRepository.findAll();
 	}
 
-	@Override
-	public Students saveStudent(Students students) {
-		return studentRepository.save(students);
-	}
+	
 
 	@Override
 	public Students getStudentById(Integer id) {
@@ -35,4 +32,11 @@ public class StudentsServiceImpl implements StudentsService{
 		studentRepository.deleteById(id);
 	}
 
+	@Override
+	public Students saveStudent(Students students) {
+		return studentRepository.save(students);
+	}
+
+	
+	
 }
